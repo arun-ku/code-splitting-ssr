@@ -13,18 +13,14 @@ const app = express();
 app.use(express.static('./dist/public'));
 
 app.get('*', (req,res) => {
-    let modules = [];
-    console.log('url', req.url)
-    const currenntRoute = routes.find(route => matchPath(req.url, route))
-    console.log(currenntRoute)
+    const currenntRoute = routes.find(route => matchPath(req.url, route));
     if (currenntRoute) {
       const params = matchPath(req.url, currenntRoute).params;
-      console.log('WWWWWWWWWWWWWWWW', params)
       // if(currentDataRequest) {
-      console.log('###########', currenntRoute.component.preload().then((c) => {
+      currenntRoute.component.preload().then((c) => {
         const currentDataRequest = c.default.need && c.default.need(params);
         Promise.resolve(currentDataRequest || {data: []}).then((response) => {
-          console.log('############inside########')
+          let modules = [];
           let html = renderToString(
             <Loadable.Capture report={moduleName => modules.push(moduleName)}>
               <StaticRouter context={{initialData: response.data}} location={req.url}>
@@ -32,7 +28,9 @@ app.get('*', (req,res) => {
               </StaticRouter>
             </Loadable.Capture>
           );
+          console.log('######modules######', modules)
           let bundles = getBundles(stats, modules);
+          console.log('######modules######', modules)
           res.send(`
         <!DOCTYPE html>
         <html lang="en">
@@ -47,13 +45,15 @@ app.get('*', (req,res) => {
         <script type="text/javascript">
           window.initialData = ${JSON.stringify((response.data))}
         </script>
+        <script src="/bundle.js"></script>
         ${bundles.map(bundle => {
             return `<script src="/${bundle.file}"></script>`
-          }).join('\n')}
+        }).join('\n')}
+        <script>window.main();</script>
         </html>
     `);
         });
-      }))
+      })
     }
 
     // }

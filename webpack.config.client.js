@@ -5,8 +5,6 @@ const { ReactLoadablePlugin } = require('react-loadable/webpack');
 module.exports = {
   entry: {
     'bundle': [
-      'babel-polyfill',
-      'react-hot-loader/patch',
       './src/index'
     ]
   },
@@ -27,7 +25,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ["es2015", "react", "stage-2"],
-            plugins: ["syntax-dynamic-import"]
+            plugins: ["syntax-dynamic-import", "react-loadable/babel"]
           }
         }
       },{

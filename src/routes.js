@@ -17,6 +17,8 @@ const App = Loadable({
     }
   },
   delay: 2000,
+  modules: ['./Components/App'],
+  webpack: () => [require.resolveWeak('./Components/App')],
 });
 
 const Info = Loadable({
@@ -31,6 +33,8 @@ const Info = Loadable({
     }
   },
   delay: 2000,
+  modules: ['./Components/Info'],
+  webpack: () => [require.resolveWeak('./Components/Info')],
 });
 
 export const routes = [
