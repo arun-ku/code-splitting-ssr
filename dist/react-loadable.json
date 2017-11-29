@@ -1,8 +1,8 @@
 {
-  "./Components/Info": [
+  "./Components/App": [
     {
-      "id": 524,
-      "name": "./src/Components/Info/index.js",
+      "id": 523,
+      "name": "./src/Components/App/index.js",
       "file": "0.js"
     }
   ],
@@ -318,10 +318,31 @@
       "file": "1.js"
     }
   ],
-  "./Components/App": [
+  "./images/react.png": [
     {
-      "id": 523,
-      "name": "./src/Components/App/index.js",
+      "id": 551,
+      "name": "./src/Components/App/images/react.png",
+      "file": "0.js"
+    }
+  ],
+  "./images/react2.png": [
+    {
+      "id": 552,
+      "name": "./src/Components/App/images/react2.png",
+      "file": "0.js"
+    }
+  ],
+  "./images/react3.png": [
+    {
+      "id": 553,
+      "name": "./src/Components/App/images/react3.png",
+      "file": "0.js"
+    }
+  ],
+  "./Components/Info": [
+    {
+      "id": 524,
+      "name": "./src/Components/Info/index.js",
       "file": "1.js"
     }
   ],

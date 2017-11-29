@@ -5,6 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "NODE_ENV=development webpack-dev-server --hot",
+    "compile:client": "webpack -p --config=webpack.config.client.js",
+    "compile:server": "webpack -p --config=webpack.config.server.js",
+    "start": "npm run compile:client && npm run compile:server && babel-node serverProd.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

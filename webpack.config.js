@@ -23,7 +23,13 @@ const clientConfig = {
       {
         test: /.js$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ["es2015", "react", "stage-2"],
+            plugins: ["syntax-dynamic-import"]
+          }
+        }
       },{
         test: /.css$/,
         use: ['style-loader', 'css-loader']
@@ -51,8 +57,8 @@ const clientConfig = {
 const serverConfig = {
   entry: './server.js',
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: "server.js"
+    path: path.resolve(__dirname),
+    filename: "serverProd.js"
   },
   target: 'node',
   module: {
@@ -60,7 +66,13 @@ const serverConfig = {
       {
         test: /.js$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ["es2015", "react", "stage-2"],
+            plugins: ["syntax-dynamic-import", "dynamic-import-node"]
+          }
+        }
       },{
         test: /.css$/,
         use: [{
@@ -83,4 +95,4 @@ const serverConfig = {
   },
 };
 
-module.exports = [clientConfig];
+module.exports = [clientConfig, serverConfig];

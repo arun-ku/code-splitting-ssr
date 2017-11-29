@@ -7,12 +7,30 @@ import Loadable from 'react-loadable';
 
 const App = Loadable({
   loader: () => import('./Components/App'),
-  loading: () => (<div>Loading</div>),
+  loading: function Loading(props) {
+    if (props.error) {
+      return <div>Error!</div>;
+    } else if (props.pastDelay) {
+      return <div>Loading...</div>;
+    } else {
+      return null;
+    }
+  },
+  delay: 2000,
 });
 
 const Info = Loadable({
   loader: () => import('./Components/Info'),
-  loading: () => (<div>Loading</div>),
+  loading: function Loading(props) {
+    if (props.error) {
+      return <div>Error!</div>;
+    } else if (props.pastDelay) {
+      return <div>Loading...</div>;
+    } else {
+      return null;
+    }
+  },
+  delay: 2000,
 });
 
 export const routes = [

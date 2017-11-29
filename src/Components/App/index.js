@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 // import './style.css';
+import logo1 from './images/react.png'
+import logo2 from './images/react2.png'
+import logo3 from './images/react3.png'
 
 export default class App extends Component {
 
@@ -21,6 +24,9 @@ export default class App extends Component {
     render() {
         return (
             <div className="main">
+              <img style={{width: 200}} src={logo1} alt="alt"/>
+              <img style={{width: 200}} src={logo2} alt="alt"/>
+              <img style={{width: 200}} src={logo3} alt="alt"/>
               React App
               {
                 this.state.posts.map((post, key) => (
